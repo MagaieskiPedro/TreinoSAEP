@@ -1,7 +1,6 @@
 @use './variaveis.scss' as *;
 // Consertar responsividade
 .cartao{
-    background-color: $background;
     border-radius: $borda-arredondada;
     padding: 1rem;
     min-height: 300px;
@@ -9,5 +8,14 @@
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex: 1 1 320px
+    flex: 1 1 320px;
+    
+}
+
+.cartao ul{
+    list-style-type: none;
+}
+.cartao button{
+    color: $font-color;
+    background-color: $button;
 }

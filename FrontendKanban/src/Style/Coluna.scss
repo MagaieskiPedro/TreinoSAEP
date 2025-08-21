@@ -1,7 +1,7 @@
 @use './variaveis.scss' as *;
 // Consertar responsividade
 .coluna{
-    background-color: $background;
+    background-color: $background-coluna;
     border:1px solid black;
     border-radius: $borda-arredondada;
     padding: 1rem;
