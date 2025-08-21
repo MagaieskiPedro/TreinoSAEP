@@ -1,6 +1,6 @@
 @use './variaveis.scss' as *;
 // Consertar responsividade
-.coluna{
+.quadro{
     background-color: $background;
     border:1px solid black;
     border-radius: $borda-arredondada;
@@ -8,7 +8,7 @@
     min-height: 400px;
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 10px;
     flex: 1 1 320px
 }

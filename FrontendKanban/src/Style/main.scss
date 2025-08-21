@@ -1,4 +1,25 @@
 @use './cabecalho.scss';
-@use './variaveis.scss';
+@use './variaveis.scss' as *;
 @use './barraNavegacao.scss';
-@use './Coluna.scss';
+@use './coluna.scss';
+@use './tarefa';
+@use './quadro.scss';
+@use './cartao.scss';
+
+
+body{
+  background-color:$primary;  
+}
+
+h1 {
+    text-align: center;
+    color: $text-light;
+    font-family: $font-primary;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
