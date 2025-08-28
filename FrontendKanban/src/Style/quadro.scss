@@ -2,8 +2,7 @@
 // Consertar responsividade
 .quadro{
     background-color: $background;
-    border:1px solid black;
-    border-radius: $borda-arredondada;
+    width: 100vw;
     padding: 1rem;
     min-height: 400px;
 

@@ -2,8 +2,10 @@
 .barra{
     width: 100vw;
     height: 40px;
-    background-color: $cor-destaque;
-    
+    background-color: $font-color;
+    a{
+        text-decoration: none;
+    }
     ul{
         font-size: $font-size;
         display: flex;
@@ -13,7 +15,7 @@
         margin-right: 2em;
         li{
             list-style: none;
-            color: $link-color;
+            color: $background;
         }
     }
 }

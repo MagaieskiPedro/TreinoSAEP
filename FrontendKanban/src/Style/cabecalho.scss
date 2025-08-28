@@ -1,9 +1,17 @@
 @use './variaveis.scss' as *;
 .container{
-    background-color: $cor-destaque;
+    background-color: $font-color;
     width: 100vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .titulo{
         font-size: 26px;
-        color:$link-color;
+        color:$background;
+    }
+    nav{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 }

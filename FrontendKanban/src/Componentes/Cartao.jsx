@@ -2,13 +2,16 @@ export function Cartao(){
     return(
             <section className="cartao">
                 <ul className="tarefa">
-                    <li>Descrição: </li>
-                    <li>Setor: </li>
-                    <li>Prioridade: </li>
-                    <li>Vinculado a: </li>
-                    <button className="tarefa">editar</button>
-                    <button className="tarefa">excluir</button>
-
+                    <section>
+                        <li>Descrição: </li>
+                        <li>Setor: </li>
+                        <li>Prioridade: </li>
+                        <li>Vinculado a: </li>
+                    </section>
+                    <section>
+                        <button className="tarefa">editar</button>
+                        <button className="tarefa">excluir</button>
+                    </section>
                     <section>
                         <select name="nome" id="id">
                             <option value="">A fazer</option>

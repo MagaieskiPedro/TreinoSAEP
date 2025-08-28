@@ -7,15 +7,23 @@
 
     display: flex;
     flex-direction: column;
-    gap: 10px;
     flex: 1 1 320px;
     
-}
+    button{
+        color: $font-color;
+        background-color: $button;
+        border: none;
+    }button:hover{
+        background-color: $background-coluna;
+        color: $link-color;
+    }
+    ul{
+        list-style-type: none;
+        color: $font-color;
 
-.cartao ul{
-    list-style-type: none;
-}
-.cartao button{
-    color: $font-color;
-    background-color: $button;
+    }
+    select,option{
+        border: none;
+        border-radius: $borda-arredondada;
+    }
 }
