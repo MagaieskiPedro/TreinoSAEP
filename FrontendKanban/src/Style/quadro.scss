@@ -1,7 +1,7 @@
 @use './variaveis.scss' as *;
 // Consertar responsividade
 .quadro{
-    background-color: $background;
+    background-color: $accent;
     width: 100vw;
     padding: 1rem;
     min-height: 400px;

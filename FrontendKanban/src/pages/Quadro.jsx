@@ -14,9 +14,13 @@ export function Quadro(){
                 <section className="coluna">
                     <h2>Fazendo:</h2>
                     <Cartao />
+                    <Cartao />
+                    <Cartao />
+                    <Cartao />
                 </section>
                 <section className="coluna">
                     <h2>Feito:</h2>                    
+                    <Cartao />
                     <Cartao />                    
                 </section>
 

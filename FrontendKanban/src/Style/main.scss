@@ -9,15 +9,14 @@
 
 
 body{
-  background-color: $cor-destaque;  
+  background-color: $background; 
 }
 
 h1 {
     text-align: center;
-    color: $text-light;
+    color: black;
     font-family: $font-primary;
     font-size: 2rem;
-    margin-bottom: 1rem;
 }
 * {
   box-sizing: border-box;

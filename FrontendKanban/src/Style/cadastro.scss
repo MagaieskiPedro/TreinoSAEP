@@ -1,7 +1,7 @@
 @use './variaveis.scss' as *;
 
 .formulario{
-    background-color: $background;
+    background-color: $accent;
     width: 100vw;
     height: auto;
     padding: 5px;
@@ -11,30 +11,34 @@
     align-items: center;
 
     .titulo{
-        color: $cor-destaque;
+        color: $font-color;
         font-size: 20px;
         font-family: Arial, Helvetica, sans-serif;
     }
     input{
         font-weight: bold;
-        border: 1px solid $cor-destaque;
+        border: 1px solid $font-color;
         border-radius: 8px;
         width: 300px;
         height: 20px;
     }
     button{
         padding: 10px;
-        background-color: $cor-destaque;
+        background-color: $button;
         color: $font-color;
         cursor: pointer;
         width: 180px;
         border-radius: 15px;
         border:none;
     }
+    button:hover{
+        background-color: $cor-destaque;
+        color: $background;
+    }
     select{
         width: 200px;
         height: 20px;
-        border: 1px solid $cor-destaque;
+        border: 1px solid $font-color;
         border-radius: 10px;
     }
 }
