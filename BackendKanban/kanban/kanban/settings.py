@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-#+(^yf$8i$kqkonuf&-jk*$d1ngkwu+i8h(5)&&5*33!74d$pc
 DEBUG = True
 
 ALLOWED_HOSTS = []
-
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    "corsheaders",
     'app'
 ]
 
