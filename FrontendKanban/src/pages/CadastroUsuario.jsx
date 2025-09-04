@@ -5,12 +5,19 @@ import {zodResolver} from '@hookform/resolvers/zod';
 
 const schemaCadUsuario = z.object({
     nome: z.string()
-    .min(1, 'Informe ao menos um caractere de nome')
-    .max(50, 'Informe no máximo 40 caracteres'),
+    .regex(/^[A-Za-zÀ-ÿ\s]$/,{
+        message: "Digite apenas letras e espaços!"
+    })
+    .regex(/^.{3,50}$/,{ //minimo 3, maximo 50
+        message: "Minimo 3 caracteres maximo de 50 caracteres!"
+    }),
     email: z.string()
-    .min(9,"Informe ao menos 9 digitos")
-    .max(50, 'Informe até 50 caracteres')
-    .email('Informe um email valido'),
+    .regex(/^[A-Za-zÀ-ÿ0-9]{1,50}@[A-Za-zÀ-ÿ]{1,15}\.[A-Za-z]{2,5}$/,{
+        message: "Digite um email valido!"
+    })
+    // .regex(/^.{2,50}$/,{ //minimo , maximo 50
+    //     message: "Minimo 9 caracteres maximo de 50 caracteres!"
+    // }),
 })
 
 export function CadastroUsuario(){
