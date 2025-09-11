@@ -11,3 +11,31 @@
     gap: 10px;
     flex: 1 1 320px
 }
+
+.cartao{
+    border-radius: $borda-arredondada;
+    padding: 1rem;
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 320px;
+    
+    button{
+        color: $font-color;
+        background-color: $button;
+        border: none;
+    }button:hover{
+        background-color: $cor-destaque;
+        color: $link-color;
+    }
+    ul{
+        list-style-type: none;
+        color: $font-color;
+
+    }
+    select,option{
+        border: none;
+        border-radius: $borda-arredondada;
+    }
+}
