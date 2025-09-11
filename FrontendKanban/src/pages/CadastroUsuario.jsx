@@ -5,31 +5,19 @@ import {zodResolver} from '@hookform/resolvers/zod';
 
 const schemaCadUsuario = z.object({
     nome: z.string()
-    .regex(/^[A-Za-zÀ-ÿ\s]$/,{
-        message: "Digite apenas letras e espaços!"
-    })
-    .regex(/^.{3,50}$/,{ //minimo 3, maximo 50
-        message: "Minimo 3 caracteres maximo de 50 caracteres!"
+    .regex(/^[A-Za-zÀ-ÿ\s]{3,50}$/,{
+        message: "Digite apenas letras e espaços de 3 a 50 caracteres!"
     }),
     email: z.string()
     .regex(/^[A-Za-zÀ-ÿ0-9]{1,50}@[A-Za-zÀ-ÿ]{1,15}\.[A-Za-z]{2,5}$/,{
         message: "Digite um email valido!"
     })
-    // .regex(/^.{2,50}$/,{ //minimo , maximo 50
-    //     message: "Minimo 9 caracteres maximo de 50 caracteres!"
-    // }),
 })
 
 export function CadastroUsuario(){
 
-    const{
-        register, //registra input do form
-        handleSubmit, // no momento do submit
-        formState: {errors}, // captura erros
-        reset // limpa campos depois de submit que deu certo
-    }=useForm({ resolver: zodResolver(schemaCadUsuario)})
-
-    async function obterDados(data) {
+    // POST
+    async function enviarDados(data) {
         console.log("Dados Recebidos: ", data)
         try{
             await axios.post("http://127.0.0.1:8000/api/usuario/", data);
@@ -41,8 +29,18 @@ export function CadastroUsuario(){
         }
     }
 
+    // CUIDA DO FORM
+    const{
+        register, //registra input do form
+        handleSubmit, // no momento do submit
+        formState: {errors}, // captura erros
+        reset // limpa campos depois de submit que deu certo
+    }=useForm({ resolver: zodResolver(schemaCadUsuario)})
+
+    
+
     return(
-        <form className="formulario" onSubmit={handleSubmit(obterDados)}>
+        <form className="formulario" onSubmit={handleSubmit(enviarDados)}>
             <h1 className="titulo">Cadastro de Usuário</h1>
             <label>Nome: </label>
             <input type="text" {...register("nome")}/>
