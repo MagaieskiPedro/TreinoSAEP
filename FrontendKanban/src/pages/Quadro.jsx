@@ -3,8 +3,10 @@ import axios from 'axios';
 
 export function Quadro(){
     const [cartoes,setCartoes] = useState([]);
-
-        useEffect(() => {
+    const [selecionado, setSelecionado] = useState("");
+    const [reload, setReload] = useState(false)
+    //GET
+    useEffect(() => {
         // Definir uma funcao asincrona no useEffect
         const buscarCartões = async () => {
             try {
@@ -16,7 +18,48 @@ export function Quadro(){
         };
         // Chamar a funcao
         buscarCartões();
-    }, []);
+    }, [reload]);
+
+    //DELETE
+    async function deletarDados(id) {
+        try{
+            const Response = await axios.delete(`http://127.0.0.1:8000/api/deletarTarefa/${id}`);
+            alert("Cartão deletado com sucesso!");
+            setReload(!reload);
+        }catch(error){
+            alert("Erro ao deletar cartão!");
+            setReload(!reload);
+        }
+    }
+    //PATCH
+    async function alterarDados(id) {
+        console.log("Dados Recebidos: ", id,"selecionado",selecionado[id])
+        try{
+            if(!selecionado){
+                alert("Selecione um status!");
+                return;
+            }
+            const Response = await axios.patch(`http://127.0.0.1:8000/api/gerenciarTarefa/${id}`, {
+                status: selecionado[id]
+            });
+            if(Response.status === 200){
+                setCartoes(antes => 
+                    antes.map(item =>
+                        item.id === id ? {...item, status: selecionado[id]} : item
+                    )
+                )
+                alert("Status alterado com sucesso! ");
+                setReload(!reload);
+            }
+            else{
+                alert("Status não foi alterado! ");
+                setReload(!reload);
+            } 
+        }catch(error){
+            alert("Erro ao alterar Status");
+            console.error("EEEEE, deu ruim, oia ai", error);
+        }
+    }
 
     return(
         <main>
@@ -24,10 +67,11 @@ export function Quadro(){
             <section className="quadro">
                 <section className="coluna">
                     <h2>A fazer:</h2>
-                    {cartoes.map((c)=> (
+                    {cartoes.filter(c => c.status === "A FAZER").map((c)=> (
                         <section className="cartao">
                             <ul className="tarefa">
                                 <section>
+                                    {c.status} {c.id}
                                     <li>Descrição: {c.descricao}</li>
                                     <li>Setor: {c.nomeSetor}</li>
                                     <li>Prioridade: {c.prioridade}</li>
@@ -35,15 +79,21 @@ export function Quadro(){
                                 </section>
                                 <section>
                                     <button className="tarefa">editar</button>
-                                    <button className="tarefa">excluir</button>
+                                    <button className="tarefa" onClick={() =>  deletarDados(c.id)}>excluir</button>
                                 </section>
                                 <section>
-                                    <select name="nome" id="id">
-                                        <option value="">A fazer</option>
-                                        <option value="">Fazendo</option>
-                                        <option value="">Feito</option>
+                                    <select onChange={(e)=>{
+                                        setSelecionado({
+                                            ...selecionado,
+                                            [c.id]:e.target.value
+                                        });
+                                    }} value={selecionado[c.id] || ''}>
+                                        <option value="">Selecione um status</option>
+                                        <option value="A FAZER">A fazer</option>
+                                        <option value="FAZENDO">Fazendo</option>
+                                        <option value="FEITO">Feito</option>
                                     </select>
-                                    <button type="button" className="tarefa">alterar status</button>
+                                    <button onClick={() => alterarDados(c.id)} type="button" className="tarefa">alterar status</button>
                                 </section>
                             </ul>
                         </section>
@@ -53,56 +103,72 @@ export function Quadro(){
                 </section>
                 <section className="coluna">
                     <h2>Fazendo:</h2>
-
-                    <section className="cartao">
+                    {cartoes.filter(c => c.status === "FAZENDO").map((c)=> (
+                        <section className="cartao">
                         <ul className="tarefa">
                             <section>
-                                <li>Descrição: </li>
-                                <li>Setor: </li>
-                                <li>Prioridade: </li>
-                                <li>Vinculado a: </li>
+                                {c.status} {c.id}
+                                <li>Descrição: {c.descricao}</li>
+                                <li>Setor: {c.nomeSetor}</li>
+                                <li>Prioridade: {c.prioridade}</li>
+                                <li>Vinculado a: {c.usuario}</li>
                             </section>
                             <section>
                                 <button className="tarefa">editar</button>
-                                <button className="tarefa">excluir</button>
+                                <button className="tarefa" onClick={() =>  deletarDados(c.id)}>excluir</button>
                             </section>
                             <section>
-                                <select name="nome" id="id">
-                                    <option value="">A fazer</option>
-                                    <option value="">Fazendo</option>
-                                    <option value="">Feito</option>
+                                <select onChange={(e)=>{
+                                        setSelecionado({
+                                            ...selecionado,
+                                            [c.id]:e.target.value
+                                        });
+                                    }} value={selecionado[c.id] || ''}>
+                                    <option value="">Selecione um status</option>
+                                    <option value="A FAZER">A fazer</option>
+                                    <option value="FAZENDO">Fazendo</option>
+                                    <option value="FEITO">Feito</option>
                                 </select>
-                                <button type="button" className="tarefa">alterar status</button>
+                                <button onClick={() => alterarDados(c.id)} type="button" className="tarefa">alterar status</button>
                             </section>
                         </ul>
-                    </section>
-
+                        </section>
+                    ))}
                 </section>
                 <section className="coluna">
                     <h2>Feito:</h2>
-
-                    <section className="cartao">
-                        <ul className="tarefa">
-                            <section>
-                                <li>Descrição: </li>
-                                <li>Setor: </li>
-                                <li>Prioridade: </li>
-                                <li>Vinculado a: </li>
-                            </section>
-                            <section>
-                                <button className="tarefa">editar</button>
-                                <button className="tarefa">excluir</button>
-                            </section>
-                            <section>
-                                <select name="nome" id="id">
-                                    <option value="">A fazer</option>
-                                    <option value="">Fazendo</option>
-                                    <option value="">Feito</option>
-                                </select>
-                                <button type="button" className="tarefa">alterar status</button>
-                            </section>
-                        </ul>
-                    </section>                    
+                    {cartoes.filter(c => c.status === "FEITO").map((c)=> (
+                        <section className="cartao">
+                            <ul className="tarefa">
+                                <section>
+                                    {c.status} {c.id}
+                                    <li>Descrição: {c.descricao}</li>
+                                    <li>Setor: {c.nomeSetor}</li>
+                                    <li>Prioridade: {c.prioridade}</li>
+                                    <li>Vinculado a: {c.usuario}</li>
+                                </section>
+                                <section>
+                                    <button className="tarefa">editar</button>
+                                    <button className="tarefa" onClick={() =>  deletarDados(c.id)}>excluir</button>
+                                </section>
+                                <section>
+                                    <select onChange={(e)=>{
+                                        setSelecionado({
+                                            ...selecionado,
+                                            [c.id]:e.target.value
+                                        });
+                                    }} value={selecionado[c.id] || ''}>
+                                        <option value="">Selecione um status</option>
+                                        <option value="A FAZER">A fazer</option>
+                                        <option value="FAZENDO">Fazendo</option>
+                                        <option value="FEITO">Feito</option>
+                                    </select>
+                                    <button onClick={() => alterarDados(c.id)} type="button" className="tarefa">alterar status</button>
+                                </section>
+                            </ul>
+                        </section>   
+                    ))}
+                 
                  
                 </section>
 
