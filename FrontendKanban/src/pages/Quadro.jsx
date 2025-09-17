@@ -62,7 +62,7 @@ export function Quadro(){
     }
 
     return(
-        <main>
+        <main className='main'>
             <h1>Kanban: </h1>
             <section className="quadro">
                 <section className="coluna">
