@@ -3,34 +3,48 @@
 .main{
     width: 100vw;
     height: 100vh;
+    display: flex;
+    justify-content: center; /* Centraliza o conteúdo */
+    align-items: center; /* Centraliza verticalmente */
+    flex-direction: column;
+    padding: 1rem;
 }
 .quadro{
-    background-color: $accent;
     width: 100%;
     height: 100%;
-    padding: 0.3rem;
-
     display: flex;
-    flex-direction: row;
+    flex-wrap: wrap; /* Permite que as colunas quebrem para a linha seguinte */
     gap: 10px;
-    flex: 1 1 320px;
-    // overflow: hidden;
+    justify-content: space-between; /* Espaça as colunas */
+    overflow: auto; /* Permite o scroll se necessário */
 }
-
+.coluna{
+    background-color: $cor-destaque;
+    border: 1px solid cornflowerblue;
+    border-radius: $borda-arredondada;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1px; // centraliza no topo
+    width: 32%; /* Colunas terão largura de 32% para dar espaço entre elas */
+    min-width: 250px; /* Evita que as colunas fiquem muito estreitas */
+    max-width: 320px; /* Limita a largura maxima das colunas */
+    height: auto; /* Permite que a altura das colunas se ajuste conforme o conteúdo */
+}
 .cartao{
     border-radius: $borda-arredondada;
     padding: 1rem;
-    min-height: 300px;
-    height: 20%;
-    width: 100%;
+    min-height: 150px;
     display: flex;
-    flex-direction: column;
-    flex: 1 1 320px;
+    flex-direction: column; // Itens do cartão organizados em coluna
+    gap: 10px;
     button{
         color: $font-color;
         background-color: $button;
         border: none;
         font-size: $font-size;
+        padding: 10px;
+        cursor: pointer;
     }button:hover{
         background-color: $cor-destaque;
         color: $link-color;
@@ -44,5 +58,33 @@
     select,option{
         border: none;
         border-radius: $borda-arredondada;
+    }
+}
+
+/* Media Queries para telas menores */
+@media (max-width: 768px) {
+    .quadro {
+        flex-direction: column; /* As colunas vão empilhar verticalmente */
+        gap: 15px; /* Aumenta o espaço entre as colunas */
+    }
+
+    .coluna {
+        width: 100%; /* As colunas irão ocupar toda a largura da tela */
+        min-height: 80%;
+        margin: 0; /* Remove qualquer margem entre as colunas */
+    }
+}
+
+@media (max-width: 480px) {
+    .coluna {
+        padding: 0.5rem; /* Reduz o padding das colunas */
+    }
+
+    .cartao {
+        min-height: 400px; /* Reduz a altura mínima dos cartões */
+    }
+
+    h1 {
+        font-size: 1.5rem; /* Reduz o tamanho da fonte no título */
     }
 }
