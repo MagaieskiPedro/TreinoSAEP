@@ -31,6 +31,12 @@
     max-width: 320px; /* Limita a largura maxima das colunas */
     height: auto; /* Permite que a altura das colunas se ajuste conforme o conteúdo */
 }
+
+.coluna.droppable-over {
+  background-color: #f0f0f0; /* ou qualquer cor que combine com seu tema */
+  transition: background-color 0.2s ease;
+}
+
 .cartao{
     border-radius: $borda-arredondada;
     padding: 1rem;
