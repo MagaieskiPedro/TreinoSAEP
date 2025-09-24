@@ -8,4 +8,12 @@
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
   font-family: $font-primary;
   margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 20px;
+  label{
+    color: $font-color;
+  }
+
 }

@@ -7,6 +7,7 @@ class UsuarioSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TarefaSerializer(serializers.ModelSerializer):
+      usuario = serializers.CharField(source='usuario.nome', read_only=True)
       class Meta:
         model = Tarefa
         fields = '__all__'

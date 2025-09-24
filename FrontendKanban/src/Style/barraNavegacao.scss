@@ -3,9 +3,7 @@
     width: 100vw;
     height: 40px;
     background-color: $font-color;
-    a{
-        text-decoration: none;
-    }
+
     ul{
         font-size: $font-size;
         display: flex;
@@ -16,6 +14,12 @@
         li{
             list-style: none;
             color: $background;
+            text-decoration: none;
+            a{
+                text-decoration: none;
+                color: white;
+            }
         }
+        
     }
 }

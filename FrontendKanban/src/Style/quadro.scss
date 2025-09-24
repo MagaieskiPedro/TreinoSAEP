@@ -15,7 +15,7 @@
     display: flex;
     flex-wrap: wrap; /* Permite que as colunas quebrem para a linha seguinte */
     gap: 10px;
-    justify-content: space-between; /* Espaça as colunas */
+    justify-content: space-evenly; /* Espaça as colunas */
     overflow: auto; /* Permite o scroll se necessário */
 }
 .coluna{
@@ -37,7 +37,6 @@
     min-height: 150px;
     display: flex;
     flex-direction: column; // Itens do cartão organizados em coluna
-    gap: 10px;
     button{
         color: $font-color;
         background-color: $button;
@@ -58,6 +57,7 @@
     select,option{
         border: none;
         border-radius: $borda-arredondada;
+        height: 30px;
     }
 }
 
@@ -66,6 +66,7 @@
     .quadro {
         flex-direction: column; /* As colunas vão empilhar verticalmente */
         gap: 15px; /* Aumenta o espaço entre as colunas */
+        justify-content: space-between;
     }
 
     .coluna {
