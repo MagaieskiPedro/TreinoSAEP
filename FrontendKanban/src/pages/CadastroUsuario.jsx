@@ -42,11 +42,11 @@ export function CadastroUsuario(){
     return(
         <form className="formulario" onSubmit={handleSubmit(enviarDados)}>
             <h1 className="titulo">Cadastro de Usuário</h1>
-            <label>Nome: </label>
-            <input type="text" {...register("nome")}/>
+            <label htmlFor="nome" aria>Nome: </label>
+            <input type="text" id="nome" {...register("nome")}/>
             {errors.nome && <p>{errors.nome.message}</p>}
-            <label>E-mail </label>
-            <input type="email" {...register("email")} />
+            <label htmlFor='email'>E-mail: </label>
+            <input type="email" id="email" {...register("email")} />
             {errors.email && <p>{errors.email.message}</p>}
             <button type="submit">Cadastrar</button>
         </form>

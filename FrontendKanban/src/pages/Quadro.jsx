@@ -23,7 +23,7 @@ function Cartao({ cartao, onDelete }) {
     : undefined;
 
   return (
-    <section className="cartao" ref={setNodeRef} style={style} {...listeners} {...attributes} aria-disabled="true">
+    <section className="cartao" ref={setNodeRef} style={style} {...listeners} {...attributes} aria-disabled="false">
         <section className="tarefa">
             <ul>
                 <li>{cartao.status} {cartao.id}</li>
