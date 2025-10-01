@@ -70,13 +70,13 @@ export function CadastroTarefa(){
             <label>Descrição </label>
             <input type="text" alt='campo de descrição' {...register("descricao")}/>
             {errors.descricao && <p>{errors.descricao.message}</p>}
-            <label>nomeSetor</label>
+            <label>Setor</label>
             <input type="text" alt='nomeSetor' {...register("nomeSetor")} />
             {errors.nomeSetor && <p>{errors.nomeSetor.message}</p>}
             
             <label>Usuario: </label>
             <select {...register("usuario")}>
-                <option>Selecione o usuario</option>
+                <option value="">Selecione o usuario</option>
                 {usuarios.map((u) => (
                     <option key={u.id} value={u.id}>{u.nome}</option>
                 ))}

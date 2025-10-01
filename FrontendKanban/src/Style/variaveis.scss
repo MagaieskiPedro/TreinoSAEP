@@ -1,18 +1,14 @@
 $background: white;
-
-
+$card: #ffe9ab;
 $cor-destaque: #96ceff;
+$botao:orange;
+$cor-botao-hover: #893E3E;
+
+$borda-arredondada: 6px;
+
+$font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 $font-color: black;
 $font-size: 16px;
-$link-color: white;
-
-$back: #f4f7f9;
-
-$accent: #ffe9ab;
-$text-light: #eceaea;
-$font-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-$button:orange;
-$borda-arredondada: 6px;
 
 *{
     margin: 0;

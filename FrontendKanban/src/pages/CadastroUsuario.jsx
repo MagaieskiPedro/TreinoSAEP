@@ -38,11 +38,10 @@ export function CadastroUsuario(){
     }=useForm({ resolver: zodResolver(schemaCadUsuario)})
 
     
-
     return(
         <form className="formulario" onSubmit={handleSubmit(enviarDados)}>
             <h1 className="titulo">Cadastro de Usuário</h1>
-            <label htmlFor="nome" aria>Nome: </label>
+            <label htmlFor="nome">Nome: </label>
             <input type="text" id="nome" {...register("nome")}/>
             {errors.nome && <p>{errors.nome.message}</p>}
             <label htmlFor='email'>E-mail: </label>

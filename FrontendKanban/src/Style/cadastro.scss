@@ -1,7 +1,7 @@
 @use './variaveis.scss' as *;
 
 .formulario{
-    background-color: $accent;
+    background-color: $card;
     width: 100vw;
     height: 100vh;
     padding: 5px;
@@ -24,7 +24,7 @@
     }
     button{
         padding: 10px;
-        background-color: $button;
+        background-color: $botao;
         color: $font-color;
         cursor: pointer;
         width: 180px;
@@ -32,7 +32,7 @@
         border:none;
     }
     button:hover{
-        background-color: $cor-destaque;
+        background-color: $cor-botao-hover;
         color: $background;
     }
     select{

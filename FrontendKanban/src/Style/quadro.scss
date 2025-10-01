@@ -47,14 +47,14 @@
     flex-direction: column; // Itens do cartão organizados em coluna
     button{
         color: $font-color;
-        background-color: $button;
+        background-color: $botao;
         border: none;
         font-size: $font-size;
         padding: 10px;
         cursor: pointer;
     }button:hover{
-        background-color: $cor-destaque;
-        color: $link-color;
+        background-color: $cor-botao-hover;
+        color: $background;
     }
     ul{
         list-style-type: none;
@@ -68,7 +68,68 @@
         height: 30px;
     }
 }
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* Garante que o modal fique sobre outros elementos */
+}
 
+.formulario-modal{
+    border-radius: $borda-arredondada;
+    background-color: $card;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    gap:10px;
+    align-items: center;
+    width: 19%;
+
+    .titulo{
+        color: $font-color;
+        font-size: 20px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    textarea{
+        font-weight: bold;
+        border: 1px solid $font-color;
+        border-radius: 8px;
+        width: 300px;
+        height: 50px;
+    }
+    input{
+        font-weight: bold;
+        border: 1px solid $font-color;
+        border-radius: 8px;
+        width: 300px;
+        height: 20px;
+    }
+    button{
+        padding: 10px;
+        background-color: $botao;
+        color: $font-color;
+        cursor: pointer;
+        width: 180px;
+        border-radius: 15px;
+        border:none;
+    }
+    button:hover{
+        background-color: $cor-botao-hover;
+        color: $background;
+    }
+    select{
+        width: 200px;
+        height: 20px;
+        border: 1px solid $font-color;
+        border-radius: 10px;
+    }
+}
 /* Media Queries para telas menores */
 @media (max-width: 768px) {
     .quadro {
