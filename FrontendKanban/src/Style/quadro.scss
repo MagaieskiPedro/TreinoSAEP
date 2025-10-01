@@ -8,6 +8,7 @@
     align-items: center; /* Centraliza verticalmente */
     flex-direction: column;
     padding: 1rem;
+   
 }
 .quadro{
     width: 100%;
@@ -16,7 +17,7 @@
     flex-wrap: wrap; /* Permite que as colunas quebrem para a linha seguinte */
     gap: 10px;
     justify-content: space-evenly; /* Espaça as colunas */
-    overflow: auto; /* Permite o scroll se necessário */
+    overflow: hidden;
 }
 .coluna{
     background-color: $cor-destaque;
@@ -24,6 +25,7 @@
     border-radius: $borda-arredondada;
     padding: 1rem;
     display: flex;
+    
     flex-direction: column;
     gap: 1px; // centraliza no topo
     width: 32%; /* Colunas terão largura de 32% para dar espaço entre elas */

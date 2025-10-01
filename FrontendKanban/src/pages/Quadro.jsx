@@ -19,11 +19,12 @@ function Cartao({ cartao, onDelete }) {
     ? {
         transform: `translate(${transform.x}px, ${transform.y}px)`,
         opacity: isDragging ? 0.5 : 1,
+        transition: isDragging ? 'none' : 'transform 200ms ease-out',
       }
     : undefined;
 
   return (
-    <section className="cartao" ref={setNodeRef} style={style} {...listeners} {...attributes} aria-disabled="false">
+    <section className="cartao" ref={setNodeRef} style={style} {...listeners} {...attributes} role="group">
         <section className="tarefa">
             <ul>
                 <li>{cartao.status} {cartao.id}</li>
@@ -33,7 +34,7 @@ function Cartao({ cartao, onDelete }) {
                 <li>Vinculado ao usuário: {cartao.usuario}</li>
             </ul>
             <button className="tarefa">Editar</button>
-            <button className="tarefa" onClick={() => onDelete(cartao.id)}>Excluir</button>
+            <button className="tarefa" onDoubleClick={() => onDelete(cartao.id)}>Excluir</button>
         </section>
     </section>
   );
