@@ -67,23 +67,23 @@ export function CadastroTarefa(){
     return(
         <form className="formulario" onSubmit={handleSubmit(enviarDados)}>
             <h1 className="titulo">Cadastro de tarefas</h1>
-            <label>Descrição </label>
-            <input type="text" alt='campo de descrição' {...register("descricao")}/>
+            <label htmlFor='descricao'>Descrição </label>
+            <input type="text" id='descricao' alt='campo de descrição' {...register("descricao")}/>
             {errors.descricao && <p>{errors.descricao.message}</p>}
-            <label>Setor</label>
-            <input type="text" alt='nomeSetor' {...register("nomeSetor")} />
+            <label htmlFor='setor'>Setor</label>
+            <input type="text" alt='nomeSetor' id="setor" {...register("nomeSetor")} />
             {errors.nomeSetor && <p>{errors.nomeSetor.message}</p>}
             
-            <label>Usuario: </label>
-            <select {...register("usuario")}>
+            <label htmlFor='usuario'>Usuario: </label>
+            <select id="usuario" {...register("usuario")}>
                 <option value="">Selecione o usuario</option>
                 {usuarios.map((u) => (
                     <option key={u.id} value={u.id}>{u.nome}</option>
                 ))}
             </select>
 
-            <label>Prioridade: </label>
-            <select id="selectedField" {...register("prioridade")}>
+            <label htmlFor='prioridade'>Prioridade: </label>
+            <select id="prioridade" {...register("prioridade")}>
                 <option>Selecione a Prioridade!</option>
                 <option value="BAIXA">Baixa</option>
                 <option value="MEDIA">Média</option>
