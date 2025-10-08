@@ -7,11 +7,11 @@ import { useState, useEffect } from 'react';
 const schemaCadTarefa = z.object({
     descricao: z.string()
     .regex(/^[A-Za-zÀ-ÿ\s]{1,200}$/,{
-        message: "Digite apenas letras e espaços(de 1 a 200 caracteres)!"
+        message: "Digite uma descricao valida!"
     }),
     nomeSetor: z.string()
     .regex(/^[A-Za-zÀ-ÿ0-9]{1,200}$/,{
-        message: "Digite um Setor valido(de 1 a 200 caracteres)!"
+        message: "Digite um Setor valido!"
     }),
     usuario: z.string()
     .transform((val) => parseInt(val, 10))  // Transformar string em número na base 10
@@ -46,7 +46,6 @@ export function CadastroTarefa(){
         console.log("Dados Recebidos: ", data)
         try{
             await axios.post("http://127.0.0.1:8000/api/criarTarefa/", data);
-            alert("Usuario cadastrado com sucesso! ");
             reset();
         }catch(error){
             alert("Erro ao cadastros usuário");
@@ -68,10 +67,10 @@ export function CadastroTarefa(){
         <form className="formulario" onSubmit={handleSubmit(enviarDados)}>
             <h1 className="titulo">Cadastro de tarefas</h1>
             <label htmlFor='descricao'>Descrição </label>
-            <input type="text" id='descricao' alt='campo de descrição' {...register("descricao")}/>
+            <input type="text" id='descricao' alt='campo de descrição' placeholder='Digite a descrição!' {...register("descricao")}/>
             {errors.descricao && <p>{errors.descricao.message}</p>}
             <label htmlFor='setor'>Setor</label>
-            <input type="text" alt='nomeSetor' id="setor" {...register("nomeSetor")} />
+            <input type="text" alt='nomeSetor' id="setor" placeholder='Digite o nome do setor!' {...register("nomeSetor")} />
             {errors.nomeSetor && <p>{errors.nomeSetor.message}</p>}
             
             <label htmlFor='usuario'>Usuario: </label>
